@@ -3,11 +3,8 @@
     $typedColor = $_GET['typedColor'] ?? null;
 
     // This could most likely be put elsewhere, but I think it looks cleaner this way.
-    ($typedColor != null && preg_match('/#(?:[0-9a-fA-F]{6})/', $typedColor) == 1) ?
-        $usedColor = $typedColor :
-        ($selectedColor != null ?
-            $usedColor = $selectedColor :
-            $usedColor = 'Grey')
+    $usedColor = ($typedColor != null && preg_match('/#(?:[0-9a-fA-F]{6})/', $typedColor) == 1) ?
+        $typedColor : ($selectedColor != null ? $selectedColor : 'Grey')
     /* This way, the typed color has priority over the selected color, so
      * we will only be able to see the text in the selected color if the
      * text box is empty or does not match the pattern.
@@ -24,9 +21,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        h1 { color: <?php echo $usedColor ?> }
-        div { color: <?php echo "$usedColor;" ?> text-align: justify;}
-        img { padding-left: 20px; padding-right: 20px }
+        h1 { color: <?=$usedColor?>; }
+        div { color: <?=$usedColor?>; text-align: justify;}
+        img { padding-left: 20px; padding-right: 20px; }
     </style>
 </head>
 <body>
