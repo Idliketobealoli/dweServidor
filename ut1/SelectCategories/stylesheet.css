@@ -1,0 +1,21 @@
+th {
+    border-bottom: 1px solid dodgerblue;
+    background-color: dodgerblue;
+    color: white;
+    padding: 5px;
+}
+.striped td {
+    border-right: 1px solid dodgerblue;
+    padding: 5px;
+}
+.striped {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid dodgerblue;
+}
+.striped tr:nth-child(even) {
+    background-color: #ddeeff;
+}
+.striped tr:nth-child(odd) {
+    background-color: white;
+}
