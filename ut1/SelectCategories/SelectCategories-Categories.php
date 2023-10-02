@@ -3,7 +3,8 @@ require_once "DBConnection.php";
 $connectionString = getConnectionString();
 
 // Use this one in case you want to fetch one at a time.
-$categories = $connectionString -> query("SELECT * FROM categoria");
+$categories = $connectionString -> prepare("SELECT * FROM categoria");
+$categories -> execute([]);
 
 // Use this one in case you want to fetch all at once and then iterate through the array.
 // $categories = $connectionString -> query("SELECT * FROM categoria")->fetchAll(PDO::FETCH_ASSOC);
@@ -27,11 +28,8 @@ $categories = $connectionString -> query("SELECT * FROM categoria");
         <?php
         // Use this loop in case you want to fetch one at a time.
         while ($category = $categories -> fetch(PDO::FETCH_ASSOC)) {
-            $categoryId = $category['id'];
-            $categoryName = $category['nombre'];
-
             echo "<tr>" .
-                "<td><a href='categoria-ficha.php?id=$categoryId'>$categoryName</a></td>" .
+                "<td><a href='categoria-ficha.php?id=".($category['id'])."'>".($category['nombre'])."</a></td>" .
                 "</tr>";
         }
 

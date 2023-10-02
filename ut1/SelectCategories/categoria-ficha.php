@@ -4,7 +4,8 @@ $id = $_GET['id'] ?? -1;
 
 $connectionString = getConnectionString();
 
-$people = $connectionString -> query("SELECT * FROM persona WHERE categoriaId = $id");
+$sentence = $connectionString -> prepare("SELECT * FROM persona WHERE categoriaId = ?");
+$sentence -> execute([$id]);
 ?>
 
 <!doctype html>
@@ -26,19 +27,12 @@ $people = $connectionString -> query("SELECT * FROM persona WHERE categoriaId = 
         <th>Estrella</th>
     </tr>
     <?php
-    while ($person = $people -> fetch(PDO::FETCH_ASSOC)) {
-        $pName = $person['nombre'];
-        $pSurname = $person['apellidos'];
-        $pPhone = $person['telefono'];
-        $pStar = $person['estrella'] == 1; // true if 1, false otherwise.
-
+    while ($person = $sentence -> fetch(PDO::FETCH_ASSOC)) {
         echo "<tr>" .
-            "<td>$pName</td>" .
-            "<td>$pSurname</td>" .
-            "<td>$pPhone</td>" .
-            "<td>";
-        echo $pStar ? "Si" : "No";
-        echo "</td></tr>";
+            "<td>".($person['nombre'])."</td>" .
+            "<td>".($person['apellidos'])."</td>" .
+            "<td>".($person['telefono'])."</td>" .
+            "<td>".(($person['estrella']) ? "Si" : "No")."</td></tr>";
     }
     ?>
 </table>
