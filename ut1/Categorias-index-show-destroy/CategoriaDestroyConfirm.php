@@ -3,6 +3,7 @@
 // Esa página intermedia mostrará una pregunta y un link "SÍ, ELIMINAR" y otro link "Cancelar",
 // y actuarán acorde a lo visto en clase.
 
+require_once "Varios.php";
 $id = $_GET['id'] ?? null;
 if ($id == null || trim($id) == "") { redirect("./CategoriaIndex.php"); }
 ?>

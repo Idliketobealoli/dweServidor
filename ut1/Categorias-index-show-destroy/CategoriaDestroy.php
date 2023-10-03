@@ -8,12 +8,12 @@ $id = $_GET['id'] ?? null;
 if ($id == null || trim($id) == "") { redirect("./CategoriaIndex.php"); }
 
 $connectionString = obtainPdoConnectionDB();
-$successfullCall = false;
+$successfulCall = false;
 
 try {
     $sentence = $connectionString->prepare("DELETE FROM categoria WHERE id = ?");
     $sentence->execute([$id]);
-    $successfullCall = true;
+    $successfulCall = true;
 }
 catch (PDOException $e) {
     loginError("Error al realizar la consulta DELETE FROM categoria WHERE id = $id : " . $e->getMessage());
@@ -31,7 +31,7 @@ catch (PDOException $e) {
     <link rel="stylesheet" href="stylesheet.css"/>
 </head>
 <body>
-    <?= $successfullCall ?
+    <?= ($successfulCall && !$sentence) ?
         "Categoría con id = $id borrada exitosamente." :
         "No se pudo borrar la categoría con id = $id."?>
     <p>
