@@ -1,0 +1,40 @@
+th {
+    border-bottom: 1px solid dodgerblue;
+    background-color: dodgerblue;
+    color: white;
+    padding: 5px;
+}
+.striped td {
+    border-right: 1px solid dodgerblue;
+    padding: 5px;
+}
+.striped {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid dodgerblue;
+}
+.striped tr:nth-child(even) {
+    background-color: #ddeeff;
+}
+.striped tr:nth-child(odd) {
+    background-color: white;
+}
+.centered {
+    text-align: center;
+}
+h1, h2, h3 {
+    color: dodgerblue;
+    font-style: italic;
+}
+div {
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: justify;
+}
+.red {
+    color: red;
+}
+.dodgerblue {
+    color: dodgerblue;
+}
+input.normal { border-color: dodgerblue; }
