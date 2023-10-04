@@ -6,19 +6,24 @@ $conexionBD = obtenerPdoConexionBD();
 $name = $_GET['categoryName'] ?? null;
 $color = $_GET['categoryColor'] ?? null;
 $id = $_GET['categoryId'] ?? null;
+
 if ($name == null || trim($name) == "") {
     $recoveredName = $conexionBD->prepare("SELECT nombre FROM categoria WHERE id = ?");
     $recoveredName->execute([trim($id)]);
     $name = $recoveredName->fetch(PDO::FETCH_ASSOC)['nombre'];
 }
 
-if (!($id == null || trim($id) == "" || $color == null || trim($color) == "" || $name == null || trim($name) == "")) {
+$categoriesWithSameName = $conexionBD->prepare("SELECT nombre FROM categoria WHERE nombre = ?");
+$categoriesWithSameName->execute([trim($name)]);
+$repeated = $categoriesWithSameName->fetchAll();
+
+if (!($id == null || trim($id) == "" || $color == null || trim($color) == "" || $name == null || trim($name) == "")
+    && sizeof($repeated) == 0) {
     $sentencia = $conexionBD->prepare("UPDATE categoria SET nombre = ?, color = ? WHERE id = ?");
     $correcto = $sentencia->execute([trim($name), trim($color), trim($id)]); // Se añade el parámetro a la consulta preparada.
 
     if ($correcto) redireccionar("CategoriasIndex.php?id=$name&mensaje=editado");
 }
-
 ?>
 
 <!doctype html>

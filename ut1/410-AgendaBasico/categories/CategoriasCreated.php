@@ -5,7 +5,13 @@ $conexionBD = obtenerPdoConexionBD();
 
 $name = $_GET['categoryName'] ?? null;
 $color = $_GET['categoryColor'] ?? null;
-if (!($name == null || trim($name) == "" || $color == null || trim($color) == "")) {
+
+$categoriesWithSameName = $conexionBD->prepare("SELECT nombre FROM categoria WHERE nombre = ?");
+$categoriesWithSameName->execute([trim($name)]);
+$repeated = $categoriesWithSameName->fetchAll();
+
+if (!($name == null || trim($name) == "" || $color == null || trim($color) == "")
+    && sizeof($repeated) == 0) {
     $sentencia = $conexionBD->prepare("INSERT INTO categoria (nombre, color) VALUES (?, ?)");
     $correcto = $sentencia->execute([trim($name), trim($color)]); // Se añade el parámetro a la consulta preparada.
 

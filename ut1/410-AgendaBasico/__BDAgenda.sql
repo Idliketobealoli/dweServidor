@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS agenda;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -14,11 +15,11 @@ CREATE TABLE IF NOT EXISTS categoria (
 
 TRUNCATE TABLE categoria;
 INSERT INTO categoria (id, nombre, color) VALUES
-                                       (1, 'Familiares', 'blue'),
-                                       (2, 'Amigos', 'lime'),
+                                       (1, 'Familiares', 'yellow'),
+                                       (2, 'Amigos', 'red'),
                                        (3, 'Trabajo', 'red'),
-                                       (4, 'Otros', 'brown'),
-                                       (8, 'Estudios', 'magenta');
+                                       (4, 'Otros', 'yellow'),
+                                       (8, 'Estudios', 'yellow');
 
 DROP TABLE IF EXISTS persona;
 CREATE TABLE IF NOT EXISTS persona (

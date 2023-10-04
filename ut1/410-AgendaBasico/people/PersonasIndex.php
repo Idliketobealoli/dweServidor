@@ -8,7 +8,7 @@
     $rs = $sentencia->fetchAll();
 ?>
 
-<html>
+<html lang="es">
 <head>
     <meta charset='UTF-8'/>
     <link rel="stylesheet" href="../stylesheet.css"/>
@@ -29,7 +29,7 @@
             <td><a><?=$fila["nombre"]?></a></td>
             <td><a><?=$fila["apellidos"]?></a></td>
             <td class="centered"><a><?=$fila["telefono"]?></a></td>
-            <td class="centered"><a><?=($fila["estrella"]) ? "⭐" : "No" ?></a></td>
+            <td class="centered"><a><?=($fila["estrella"]) ? "⭐" : "◼️" ?></a></td>
             <td class="centered"><a> X </a></td>
         </tr>
     <?php } ?>

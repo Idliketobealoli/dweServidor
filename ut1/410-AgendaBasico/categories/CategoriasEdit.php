@@ -12,7 +12,7 @@
     $fila = $select->fetch();
 
     // Con esto, accedemos a los datos de la primera (y esperemos que única) fila que haya venido.
-    $categoriaNombre = $fila["nombre"] ?? "Not found.";
+    $categoriaNombre = $fila["nombre"] ?? null;
 ?>
 
 <!doctype html>
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../stylesheet.css"/>
 </head>
 <body>
-<h1 class="centered">Editar categoría: <?=trim($categoriaNombre)?></h1>
+<h1 class="centered">Editar categoría: <?=($categoriaNombre != null) ? trim($categoriaNombre) : "Not found" ?></h1>
 <form action="CategoriasEdited.php" class="centered">
     <label for="categoryName" class="centered">Cambiar el nombre de la categoria: </label>
     <input type="text" name="categoryName" id="categoryName" placeholder="<?=trim($categoriaNombre)?>"
