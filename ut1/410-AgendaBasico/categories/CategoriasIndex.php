@@ -22,6 +22,13 @@
 </head>
 <body>
     <h1 class="centered">Listado de Categorías</h1>
+    <form action="CategoriasFiltered.php" class="dodgerblue derecha">
+        <label for="persona" class="derecha">Buscar categoria a la que pertenece: </label>
+        <input type="text" name="persona" id="persona" placeholder="Nombre de la persona"
+               class="normal centered"/>
+        <input type='submit' value='Submit' class="centered"/><br/>
+    </form>
+
     <table class="striped">
         <tr>
             <th>Nombre</th>

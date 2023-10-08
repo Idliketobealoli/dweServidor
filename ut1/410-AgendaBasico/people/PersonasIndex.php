@@ -3,6 +3,9 @@
 
     $conexion = obtenerPdoConexionBD();
 
+    $id = $_REQUEST['id'] ?? null;
+    $mensaje = $_REQUEST['mensaje'] ?? null;
+
     $sentencia = $conexion->prepare("SELECT * FROM persona ORDER BY nombre");
     $sentencia->execute([]);
     $rs = $sentencia->fetchAll();
@@ -18,23 +21,25 @@
 <table class="striped">
     <tr>
         <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Telefono</th>
-        <th>Estrella</th>
         <th>Eliminar</th>
     </tr>
 
     <?php foreach ($rs as $fila) { ?>
         <tr>
-            <td><a><?=$fila["nombre"]?></a></td>
-            <td><a><?=$fila["apellidos"]?></a></td>
-            <td class="centered"><a><?=$fila["telefono"]?></a></td>
-            <td class="centered"><a><?=($fila["estrella"]) ? "⭐" : "◼️" ?></a></td>
-            <td class="centered"><a> X </a></td>
+            <td><a  href='PersonasShow.php?id=<?=$fila["id"]?>'><?=$fila["nombre"]?> <?=$fila["apellidos"]?></a></td>
+            <td class="centered"><a href='PersonasDestroy.php?id=<?=$fila["id"]?>'> X </a></td>
         </tr>
     <?php } ?>
 </table>
 <br/>
+<a href='PersonasCreate.php'>Crear persona</a>
+<br/>
+<br/>
 <a href='../categories/CategoriasIndex.php'>Gestionar listado de Categorias</a>
+<?= !($id == null || trim($id) == "" || $mensaje == null || trim($mensaje) == "")
+    ? "<br/><br/>" .
+    "<p class='red'>$id - $mensaje</p>"
+    : ""
+?>
 </body>
 </html>

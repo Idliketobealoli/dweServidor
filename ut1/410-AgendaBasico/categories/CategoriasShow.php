@@ -40,8 +40,8 @@
             echo "<tr>" .
                 "<td>".($person['nombre'])."</td>" .
                 "<td>".($person['apellidos'])."</td>" .
-                "<td>".($person['telefono'])."</td>" .
-                "<td>".(($person['estrella']) ? "Si" : "No")."</td></tr>";
+                "<td class='centered'>".($person['telefono'])."</td>" .
+                "<td class='centered'>".(($person['estrella']) ? "⭐" : "◼️")."</td></tr>";
         }
         ?>
     </table>

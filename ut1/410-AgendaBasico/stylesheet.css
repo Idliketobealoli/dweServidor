@@ -22,6 +22,9 @@ th {
 .centered {
     text-align: center;
 }
+.derecha {
+    text-align: right;
+}
 h1, h2, h3 {
     color: dodgerblue;
     font-style: italic;
