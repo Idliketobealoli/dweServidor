@@ -38,7 +38,7 @@
     "<td>".($fila['nombre'])."</td>" .
     "<td>".($fila['apellidos'])."</td>" .
     "<td class='centered'>".($fila['telefono'])."</td>" .
-    "<td class='centered'>".(($fila['estrella']) ? "⭐" : "◼️")."</td>" .
+    "<td class='centered'><a href='PersonasSwitchStar.php?id=".$personaId."'>".(($fila['estrella']) ? "⭐" : "◼️")."</a></td>" .
     "<td class='centered'>".$categoriaNombre."</td></tr>"
     ?>
 </table>

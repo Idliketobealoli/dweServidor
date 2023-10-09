@@ -21,12 +21,14 @@
 <table class="striped">
     <tr>
         <th>Nombre</th>
+        <th>Estrella</th>
         <th>Eliminar</th>
     </tr>
 
     <?php foreach ($rs as $fila) { ?>
         <tr>
             <td><a  href='PersonasShow.php?id=<?=$fila["id"]?>'><?=$fila["nombre"]?> <?=$fila["apellidos"]?></a></td>
+            <td class="centered"><a href='PersonasSwitchStar.php?id=<?=$fila["id"]?>'><?= ($fila["estrella"] == 1) ? "⭐" : "◼️" ?></a></td>
             <td class="centered"><a href='PersonasDestroy.php?id=<?=$fila["id"]?>'> X </a></td>
         </tr>
     <?php } ?>
